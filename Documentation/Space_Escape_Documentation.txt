@@ -1,0 +1,76 @@
+//------------------------------------------------------------------
+// 1. Change The Camer Background
+// 2. Add PLayer , EnemySmall , EnemyBig Sprites
+// 3. Add Astroid Animation(Select All THe Sprites For Animation)
+// --------------------------------------
+// Player Object :
+// ---------------
+// Add Polygon Collider (You Can Edit Collider)
+// Check Is Trigger
+// Tag With The PLayer Tag
+// Add Rigid Body 2D & Change It To Kinematic(Doesn't get affected by gravity)
+// Create A new script called "PlayerMovement" & attach it to "Player object"
+// Make "Player object as a prefab"
+
+
+
+PlayerScript:
+------------------------------------------
+	Parameters :
+	------------
+	Player_Speed
+	Player_Rotation_Speed
+	Player_Horizantal_Axis				
+	//									********* 7 : 20  **********
+	
+
+	transform.Translate(Vector2.up * player_speed * Time.deltaTime, Space.Self);
+	
+	""" WHAT IS TRANSFORM & TRANSLATE """
+	0:0:1 transform.Translate(new Vector3(0 , 0 , 1);
+	      --------------------------------------------
+	Update(){
+	 Moves Player Continuosly Forward
+	 Move player right / left according to the key pressed
+	}
+
+UnityProject
+--------------------------------------------
+Asteroid Object :
+-----------------
+	Sorting Layer
+	Polygon Collider : Is Trigger (Yes)
+	Rigid Body : Dynamic
+	Add Tag : Asteroid
+	Create Prefab & Remove Asteroid Object
+
+AsteroidSpwaner Object :
+-------------------------	
+	AsteroidSpwaner.cs
+	------------------
+	Parameters
+	----------
+	GameObject refernce
+	SpawnInterval
+	Left & Right Boundary Values
+	
+	Start(){
+	CamerBound()
+	//Assigns max_x , min_x values
+	________________________________________
+	
+	}
+	
+	Coroutine For Spawning Mines  
+	-----------------------------
+	{
+		How Many Astroids To Spawn : random(2 , 5)
+		Spawn Asteroid At Random Position B/W the boundaries		
+	}
+	
+	Invoke To Active Asteroid Spawner
+	---------------------------------
+	{
+		Spawn Asteroids 1 second after the game is started & then for every 3 seconds spawn asteroids
+	}
+	

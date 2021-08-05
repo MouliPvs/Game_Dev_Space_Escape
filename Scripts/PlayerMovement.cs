@@ -23,7 +23,9 @@ public class PlayerMovement : MonoBehaviour
         //Self means it use cooridinates relative to the "Plane/Player" not relative to the unity world
         transform.Translate(Vector2.up * player_speed * Time.deltaTime, Space.Self);
        
-        //Negavitive axis because in default if you press left it will go right
+        //Negative axis because in default if you press left it will go right
         transform.Rotate(Vector3.forward * -user_input_horizantal_axis * player_rotational_speed * Time.deltaTime);
+
+
     }
 }  // class
