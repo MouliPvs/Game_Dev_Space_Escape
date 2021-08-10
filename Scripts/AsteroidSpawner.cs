@@ -7,7 +7,7 @@ public class AsteroidSpawner : MonoBehaviour
     [SerializeField]
     private GameObject asteroid_prefab;
 
-    private float minX, maxX;
+    private float left_boundary, right_boundary;
 
     private float spawn_interval;
 
@@ -31,8 +31,8 @@ public class AsteroidSpawner : MonoBehaviour
 
     private void CameraBounds()
     {
-        minX = Camera.main.ViewportToWorldPoint(new Vector2(0, 0)).x;
-        maxX = Camera.main.ViewportToWorldPoint(new Vector2(1, 0)).x;
+        left_boundary = Camera.main.ViewportToWorldPoint(new Vector2(0, 0)).x;
+        right_boundary = Camera.main.ViewportToWorldPoint(new Vector2(1, 0)).x;
     }
 
     private void ActivateAsteroidSpawner()
@@ -49,7 +49,7 @@ public class AsteroidSpawner : MonoBehaviour
         Vector3 asteroid_current_position = transform.position;
         for(int i = 0; i<=asteroid_count; i++)
         {
-            asteroid_current_position.x = Random.Range(minX, maxX);
+            asteroid_current_position.x = Random.Range(left_boundary, right_boundary);
             Instantiate(asteroid_prefab, asteroid_current_position, Quaternion.identity);
             //Null is gonna skip every next frame
             yield return null;
