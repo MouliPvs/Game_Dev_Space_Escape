@@ -18,6 +18,21 @@ public class AsteroidScript : MonoBehaviour
         DeactivateAsteroids();
     }
 
+    /// <summary>
+    /// If the asteroids hits the enemy. enemy gets deactivated.
+    /// </summary>
+    /// <param name="target"></param>
+    private void OnTriggerEnter2D(Collider2D target)
+    {
+        if (target.tag == "Enemy")
+        {
+            target.gameObject.SetActive(false);
+        }
+    }
+
+    /// <summary>
+    /// Deactivates Asteroids Once They Hit The Lower Boundary
+    /// </summary>
     private void DeactivateAsteroids()
     {
         if (transform.position.y < lower_boundary)
@@ -25,4 +40,5 @@ public class AsteroidScript : MonoBehaviour
             gameObject.SetActive(false);
         }
     }
+
 }

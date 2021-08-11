@@ -23,7 +23,7 @@ public class EnemyScript : MonoBehaviour
 
     void Start()
     {
-        enemy_speed = 3f;
+        enemy_speed = 2.5f;
         enemy_rotational_speed = 200f;
 
     }
@@ -52,6 +52,7 @@ public class EnemyScript : MonoBehaviour
         enemy_body.angularVelocity = enemy_rotational_speed * rotaion_value;
 
     }
+
 
 
 } // class
