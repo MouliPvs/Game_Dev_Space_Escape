@@ -11,13 +11,19 @@ public class EnemyScript : MonoBehaviour
     private Rigidbody2D enemy_body;
 
     private Vector2 enemy_position, player_position;
-    // Start is called before the first frame update
 
+    [HideInInspector]
+    public EnemySpawner enemySpawner;
+    // Start is called before the first frame update
+    
+    [SerializeField]
+    private GameObject explosion;
+    
     private void Awake()
     {
         //Dont harcode like this "Player" create seperate script that have all these strings
         player_object = GameObject.FindWithTag("Player").transform;
-        Debug.Log(player_object);
+        //Debug.Log(player_object);
         enemy_body = GetComponent<Rigidbody2D>();
     }
 
@@ -53,6 +59,14 @@ public class EnemyScript : MonoBehaviour
 
     }
 
+    private void OnTriggerEnter2D(Collider2D target)
+    {
+        if (target.tag == "Asteroid")
+        {
+            Instantiate(explosion, transform.position, Quaternion.identity);
+            enemySpawner.ActivateEnemySpawning();
+        }
+    }
 
 
 } // class

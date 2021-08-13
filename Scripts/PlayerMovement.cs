@@ -6,6 +6,9 @@ using UnityEngine.UIElements;
 public class PlayerMovement : MonoBehaviour
 {
     public float player_speed, player_rotational_speed, user_input_horizantal_axis;
+    
+    [SerializeField]
+    private GameObject explosion;
     // Start is called before the first frame update
     void Start()
     {
